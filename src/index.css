@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-warm-ivory: #FFFDF7;
+  --color-cream: #F5EBDD;
+  --color-antique-gold: #B08D57;
+  --color-charcoal: #173F35;
+  --color-deep-maroon: #7A1830;
+  
+  --font-display: "Cormorant Garamond", serif;
+  --font-sans: "DM Sans", sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-warm-ivory);
+    /* Very subtle luxury paper grain texture (3% opacity) */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-charcoal);
+    font-weight: 300; /* Ultra-light elegant weight */
+  }
+  
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #FFFDF7; }
+  ::-webkit-scrollbar-thumb { background: #B08D57; border-radius: 3px; }
+}
+
+@keyframes premiumPetalFall {
+
+  0% {
+    transform:
+      translate3d(0, -10vh, 0)
+      rotate(var(--rotation));
+
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 0.7;
+  }
+
+  25% {
+    transform:
+      translate3d(
+        calc(var(--drift) * 0.25),
+        25vh,
+        0
+      )
+      rotate(calc(var(--rotation) + 90deg));
+  }
+
+  50% {
+    transform:
+      translate3d(
+        calc(var(--drift) * -0.45),
+        55vh,
+        0
+      )
+      rotate(calc(var(--rotation) + 180deg));
+  }
+
+  75% {
+    transform:
+      translate3d(
+        calc(var(--drift) * 0.55),
+        82vh,
+        0
+      )
+      rotate(calc(var(--rotation) + 270deg));
+  }
+
+  92% {
+    opacity: 0.7;
+  }
+
+  100% {
+    transform:
+      translate3d(
+        var(--drift),
+        115vh,
+        0
+      )
+      rotate(
+        calc(var(--rotation) + var(--rotation-end))
+      );
+
+    opacity: 0;
+  }
+}
+
+/* Cinematic Gold Shine Animation */
+@keyframes shine {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+.gold-shine {
+  background: linear-gradient(120deg, #173F35 30%, #B08D57 50%, #173F35 70%);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: shine 4s linear infinite;
+}
