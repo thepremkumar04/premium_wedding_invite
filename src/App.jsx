@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";import { motion } from "framer-motion";
 import FallingFlowers from "./components/FallingFlowers";
 import InvitationCover from "./components/InvitationCover";
-
+import StudioSignature from "./components/StudioSignature";
 /* =========================================================
    HERO
 ========================================================= */
@@ -1076,6 +1076,8 @@ function App() {
 
           <ClosingSection />
 
+          <StudioSignature />
+
           {/* MUSIC CONTROL */}
           <button
             onClick={toggleMusic}
@@ -1090,5 +1092,6 @@ function App() {
     </main>
   );
 }
+
 
 export default App;
